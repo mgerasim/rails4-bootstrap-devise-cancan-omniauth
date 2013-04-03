@@ -19,7 +19,7 @@ railties/bin/rails new ../myapp --edge --skip-bundle -m https://raw.github.com/a
 * Edit `config/initializers/devise.rb` to customize your omniauth providers:
 
 ```ruby
-config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'email,user_birthday,read_stream'
+config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'email,user_birthday,read_stream'
 config.omniauth :twitter, ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET']
 ```
 * Edit `config/config.yml` to customize your application settings, they will be avaliable via `AppConfig` object within your app, e.g. `AppConfig.default_role`

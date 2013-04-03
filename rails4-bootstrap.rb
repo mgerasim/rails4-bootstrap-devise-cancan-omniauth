@@ -65,11 +65,13 @@ gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'rails4'
 gem 'cancan'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'hashugar', github: 'alex-klepa/hashugar'
 
 run 'bundle install'
+
+gsub_file 'config/initializers/session_store.rb', ':encrypted_cookie_store', ':cookie_store'
 
 ### Generators
 generate 'mongoid:config'
@@ -88,12 +90,11 @@ route <<-eos
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 eos
-route <<-eos
-
-  authenticated :user do
-    root :to => 'home#index'
-  end
-eos
+#route <<-eos
+#  authenticated :user do
+#    root :to => 'home#index'
+#  end
+#eos
 
 ### Simple form
 inject_into_file 'config/initializers/simple_form_bootstrap.rb', after: 'SimpleForm.setup do |config|' do
@@ -117,7 +118,7 @@ inject_into_file "app/assets/javascripts/application.js", "//= require bootstrap
 ### Devise OmniAuth providers config
 inject_into_file 'config/initializers/devise.rb', after: /# config.omniauth .*?\n/ do
   <<-eos
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'email,user_birthday,read_stream'
+  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   config.omniauth :twitter, ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET']
   eos
 end
