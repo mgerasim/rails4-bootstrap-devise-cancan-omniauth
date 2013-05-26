@@ -85,8 +85,8 @@ route 'resources :users'
 route <<-eos
 
   devise_for :users, :controllers => {
-    registrations: "users/registrations", 
-    passwords: "users/passwords", 
+    registrations: "users/registrations",
+    passwords: "users/passwords",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 eos
@@ -97,6 +97,7 @@ eos
 #eos
 
 ### Simple form
+create_file  'config/initializers/simple_form_bootstrap.rb'
 inject_into_file 'config/initializers/simple_form_bootstrap.rb', after: 'SimpleForm.setup do |config|' do
   <<-eos
 
