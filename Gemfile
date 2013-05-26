@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-gem "rails", github: "rails/rails"
+gem "rails", "~> 4.0.0.rc1"
 gem "mongoid", github: "mongoid/mongoid"
 group :assets do
-  gem "sprockets-rails", github: "rails/sprockets-rails"
+  gem "sprockets-rails"
   gem "sass-rails", github: "rails/sass-rails"
   gem "coffee-rails", github: "rails/coffee-rails"
   gem "therubyracer", platforms: :ruby
