@@ -27,7 +27,6 @@ create_file 'Gemfile'
 add_source 'https://rubygems.org'
 
 gem 'rails', github: 'rails/rails'
-gem 'mongoid', github: 'mongoid/mongoid'
 gem_group :assets do
   gem 'sprockets-rails', github: 'rails/sprockets-rails'
   gem 'sass-rails', github: 'rails/sass-rails'
@@ -50,7 +49,6 @@ gem_group :development, :test do
 end
 
 gem_group :test do
-  gem 'mongoid-rspec'
   gem 'ffaker'
   gem 'simplecov', require: false
   gem 'database_cleaner'
